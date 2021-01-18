@@ -1,0 +1,34 @@
+# Project: Volleyball Game
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o pole.o score.o
+LINKOBJ  = main.o pole.o score.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"SDL2_image-2.0.5/x86_64-w64-mingw32/lib" -L"SDL2_mixer-2.0.4/x86_64-w64-mingw32/lib" -L"SDL2_ttf-2.0.15/x86_64-w64-mingw32/lib" -L"SDL2-2.0.12/x86_64-w64-mingw32/lib" -L"SDL_bgi-2.4.2/bin/Mingw64" -L"C:/Users/Connor/Desktop/HW3/SDL2-2.0.12/x86_64-w64-mingw32/lib" -L"C:/Users/Connor/Desktop/HW3/SDL_bgi-2.4.2/bin/Mingw64" -L"C:/Users/Connor/Desktop/HW3/SDL2_image-2.0.5/x86_64-w64-mingw32/lib" -L"C:/Users/Connor/Desktop/HW3/SDL2_mixer-2.0.4/x86_64-w64-mingw32/lib" -L"C:/Users/Connor/Desktop/HW3/SDL2_ttf-2.0.15/x86_64-w64-mingw32/lib" -mwindows -lmingw32 -L/mingw64/bin -lSDL_bgi -lSDL2_ttf -lSDL2_mixer -lSDL2_image -lSDL2main -lSDL2
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"SDL_bgi-2.4.2/src" -I"SDL2-2.0.12/x86_64-w64-mingw32/include" -I"SDL2-2.0.12/x86_64-w64-mingw32/include/SDL2" -I"SDL2_image-2.0.5/x86_64-w64-mingw32/include" -I"SDL2_mixer-2.0.4/x86_64-w64-mingw32/include" -I"SDL2_ttf-2.0.15/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"SDL_bgi-2.4.2/src" -I"SDL2-2.0.12/x86_64-w64-mingw32/include" -I"SDL2-2.0.12/x86_64-w64-mingw32/include/SDL2" -I"SDL2_image-2.0.5/x86_64-w64-mingw32/include" -I"SDL2_mixer-2.0.4/x86_64-w64-mingw32/include" -I"SDL2_ttf-2.0.15/x86_64-w64-mingw32/include"
+BIN      = "Volleyball game.exe"
+CXXFLAGS = $(CXXINCS) -std=gnu++11
+CFLAGS   = $(INCS) -std=gnu++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+pole.o: pole.cpp
+	$(CPP) -c pole.cpp -o pole.o $(CXXFLAGS)
+
+score.o: score.cpp
+	$(CPP) -c score.cpp -o score.o $(CXXFLAGS)

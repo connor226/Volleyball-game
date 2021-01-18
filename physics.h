@@ -5,6 +5,8 @@ using namespace std;
 
 
 
+int flag = 0;
+
 SDL_Rect operator +(const SDL_Rect &r, const pair<int, int> &v){
 	SDL_Rect ret = r;
 	ret.x += v.X;
@@ -123,31 +125,37 @@ bool NextStep(BALL *ball, PLAYER *player1, PLAYER *player2, POLE *pole){
 		case 1:{
 			ball->v.X = 0;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 2:{
 			ball->v.X = ballv_dx;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 3:{
-			ball->v.X = ballv_spx;
+			ball->v.X = ballv_spx * (++ flag);
 			ball->v.Y = -ballv_spy;
+			flag = 0;
 			break;
 		}
 		case 4:{
 			ball->v.X = -ballv_dx;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 5:{
 			ball->v.X = ballv_dx;
 			ball->v.Y = ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 6:{
 			ball->v.X = -ballv_dx;
 			ball->v.Y = ballv_dy;
+			flag = 0;
 			break;
 		}
 	}
@@ -158,31 +166,37 @@ bool NextStep(BALL *ball, PLAYER *player1, PLAYER *player2, POLE *pole){
 		case 1:{
 			ball->v.X = 0;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 2:{
 			ball->v.X = -ballv_dx;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 3:{
-			ball->v.X = -ballv_spx;
+			ball->v.X = -ballv_spx * (++ flag);
 			ball->v.Y = -ballv_spy;
+			flag = 0;
 			break;
 		}
 		case 4:{
 			ball->v.X = ballv_dx;
 			ball->v.Y = -ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 5:{
 			ball->v.X = ballv_dx;
 			ball->v.Y = ballv_dy;
+			flag = 0;
 			break;
 		}
 		case 6:{
 			ball->v.X = -ballv_dx;
 			ball->v.Y = ballv_dy;
+			flag = 0;
 			break;
 		}
 	}
@@ -192,11 +206,13 @@ bool NextStep(BALL *ball, PLAYER *player1, PLAYER *player2, POLE *pole){
 	switch(check){
 		case 1:{
 			ball->v.X = -ball->v.X;
+			flag = 0;
 			break;
 		}
 		case 2:{
 			ball->v.X = ball->v.X/ballv_dx;
 			ball->v.Y = 0;
+			flag = 0;
 			break;
 		}
 	}
@@ -206,17 +222,21 @@ bool NextStep(BALL *ball, PLAYER *player1, PLAYER *player2, POLE *pole){
 	switch(check){
 		case 1:{
 			ball->v.X = -ball->v.X;
+			flag = 0;
 			break;
 		}
 		case 2:{
 			ball->v.X = -ball->v.X;
+			flag = 0;
 			break;
 		}
 		case 3:{
 			ball->v.Y = 0;
+			flag = 0;
 			break;
 		}
 		case 4:{
+			flag = 0;
 			return true;
 			break;
 		}
